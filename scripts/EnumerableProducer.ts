@@ -157,8 +157,7 @@ var __makeEnumerable = function<TSource, TReturn>(
         _source: TSource,
         nested: boolean,
         _nextFunc: (handle?: (elem: TReturn) => any) => IEnumeratorState<TReturn>,
-        _nextHandle?: (elem: TReturn) => any,
-        extArg1?
+        _nextHandle?: (elem: TReturn) => any
     ): IEnumerable<TReturn> {
     let enumerable = Object.create(_enumerableProto, {
         [Symbol.iterator]: {
@@ -222,10 +221,10 @@ var __makeEnumerable = function<TSource, TReturn>(
 
 function makeEnumerable<TElem>(source: Array<TElem>): IEnumerable<TElem>
 function makeEnumerable<TKey, TElem>(source: Map<TKey, TElem>): IEnumerable<[TKey, TElem]>
-function makeEnumerable<TElem>(source: {[key: string]: TElem}, saveKeys: boolean): IEnumerable<[string, TElem]>
-function makeEnumerable(source, arg1?): IEnumerable<any>
+function makeEnumerable<TElem>(source: {[key: string]: TElem}): IEnumerable<[string, TElem]>
+function makeEnumerable(source): IEnumerable<any>
 {
-    return __makeEnumerable(source, false, _originNext, null, arg1);
+    return __makeEnumerable(source, false, _originNext, null);
 }
 
 export default makeEnumerable;
