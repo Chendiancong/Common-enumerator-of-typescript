@@ -2,8 +2,6 @@
 // 数据源指向原来的引用，但是会在迭代的时候才进行求值
 // 可以支持Arry，Map以及一般对象
 
-import { log } from "cc";
-
 var _originNext = function() {
     if (this.sourceType == "Array")
     {
@@ -140,7 +138,7 @@ var _getEnumerator = function<TReturn>() {
 
 var _debug = function() {
     for (let v of this)
-        log(v);
+        console.log(v);
 }
 
 var _enumerableProto = {
